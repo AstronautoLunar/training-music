@@ -2,14 +2,18 @@ main#main {
     width: 100%;
     height: 35rem;
     
-    flex-direction: column;
+    
     justify-content: center;
     align-items: center;
 }
 
 main#main,
 div#area-sound,
-div#area-initial
+div#area-initial,
+div#area-audio,
+div#play-sound,
+div#area-button-sound,
+div.sound-chosen
 {
     display: flex;
 }
@@ -107,4 +111,97 @@ div#area-initial {
     transition: all 200ms;
 }
 
+div#area-audio {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 
+    width: 100%;
+    height: 100%;
+}
+
+div#play-sound {
+    width: 150px;
+    height: 150px;
+
+    background-color: var(--blue-aqua);
+
+    border-radius: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    transition: all 200ms;
+
+    cursor: pointer;
+}
+
+div#play-sound:hover,
+div.sound-chosen:hover
+{
+    transform: scale(1.2);
+}
+
+.jump-out {
+    animation-name: jump-out;
+    animation-duration: 200ms;
+}
+
+@keyframes jump-out {
+    0% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+div#area-button-sound, 
+div.sound-chosen 
+{
+    justify-content: center;
+    align-items: center;
+}
+
+div.sound-chosen {
+    width: 50px;
+    height: 50px;
+
+    background-color: var(--blue-aqua);
+
+    border-radius: 100%;
+
+    padding: 10px;
+
+    color: var(--blue-white);
+
+    font-size: 25px;
+
+    margin: 10px;
+
+    cursor: pointer;
+}
+
+.selected-note {
+    animation-name: selected-note;
+    animation-duration: 200ms;
+}
+
+@keyframes selected-note {
+    0% {
+        background-color: var(--blue-aqua);
+    }
+
+    50% {
+        background-color: var(--aqua-dark);
+    }
+
+    100% {
+        background-color: var(--blue-aqua);
+    }
+}
