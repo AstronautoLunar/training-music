@@ -3,12 +3,56 @@
     <head>
         <meta charset='utf-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Page Title</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='./style/style.css'>
+        
+        <title>Page Title</title>
+        
+        <link rel='stylesheet' type='text/css' media='screen' href='./style/header.css'>
+        <link href="style/globals.css" rel="stylesheet"/>
+        <link href="style/main.css" rel="stylesheet"/>
     </head>
     <body>
-        
-        <script src='main.js'></script>
+        <header id="header" role="header">
+            <h1 id="title-header">Treinador de ouvido relativo</h1>
+            <nav id="nav-header">
+                <ul id="list-nav">
+                    <li class="item">
+                        <img 
+                            class="icon"
+                            src="assets/icons/icon-house.svg"
+                            alt="icon house"
+                        >
+                    </li>
+                    <li class="item">
+                        <img 
+                            class="icon"
+                            src="assets/icons/icon-about.svg"
+                            alt="icon about"
+                        >
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main id="main" role="main">
+            <div id="area-sound">
+                <div id="area-initial">
+                    <ul id="options">
+
+                    </ul>
+                    <button id="button-play">
+                        Play
+                    </button>
+                </div>
+            </div>
+        </main>
+        <script src='./script/main.js'></script>
+        <script>
+            controlsSound.drawControlsInitial();
+            controlsSound.loadButtonNote();
+            controlsSound.start();
+            if(start) {
+                controlsSound.loadInterface();
+            }
+        </script>
     </body>
 </html>

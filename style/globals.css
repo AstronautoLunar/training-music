@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --blue-white: #E8F0F2;
+    --aqua: #A2DBFA;
+    --blue-aqua: #39A2DB;
+    --aqua-dark: #053742;
+}

@@ -1,0 +1,110 @@
+main#main {
+    width: 100%;
+    height: 35rem;
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main#main,
+div#area-sound,
+div#area-initial
+{
+    display: flex;
+}
+
+div#area-sound {
+    width: calc(100% - 200px);
+    height: 80%;
+
+    background-color: var(--blue-white);
+
+    border-radius: 20px;
+
+}
+
+div#area-sound,
+div#area-initial {
+    justify-content: space-around;
+    align-items: center;
+}
+
+div#area-initial {
+    width: 100%;
+}
+
+li.button-note {
+    list-style-type: none;
+
+    padding: 10px;
+
+    font-size: 20px;
+
+    color: var(--blue-white);
+
+    margin: 5px;
+
+    background-color: var(--blue-aqua);
+
+    transition: all 200ms;
+
+    cursor: pointer;
+}
+
+li.button-note:hover {
+    transform: scale(1.2);
+}
+
+li.selected {
+    background-color: var(--aqua-dark);
+}
+
+button#button-play {
+    padding: 50px 100px;
+
+    background-color: var(--blue-aqua);
+
+    border: none;
+    
+    color: var(--blue-white);
+    
+    font-size: 40px;
+
+    animation-duration: 200ms;
+}
+
+.selected-start-button {
+    animation-name: grow-on;
+}
+
+@keyframes grow-on {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+    
+    100% {
+        transform: scale(1);
+    }
+}
+
+button#button-play,
+li.button-note
+{
+    border-radius: 20px;
+    
+    cursor: pointer;
+    
+}
+
+button#button-play,
+li.button-note,
+div#area-initial {
+    transition: all 200ms;
+}
+
+
