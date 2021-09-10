@@ -3,10 +3,6 @@ const controlsHeader = {
     areaAbout: window.document.querySelector('div#area-about'),
     main: window.document.querySelector('main#main'),
 
-    load() {
-        this.areaAbout.style.display = "none";
-    },
-
     loadMain() {
         this.buttonsNavBar[0].onclick = () => {
             controlsSound.areaSound.style.display = "flex";

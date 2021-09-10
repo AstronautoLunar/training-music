@@ -143,7 +143,7 @@ const controlsSound = {
         this.divAreaAudio.appendChild(divButtonsSoundNote);
 
         const imagePlay = new Image();
-        imagePlay.src = "../assets/icons/icon-play.svg";
+        imagePlay.src = "./assets/icons/icon-play.svg";
         imagePlay.setAttribute('alt', 'icon play sound')
         imagePlay.style.width = "35%";
         divPlayMusic.appendChild(imagePlay);
@@ -159,7 +159,7 @@ const controlsSound = {
             setTimeout(() => {
                 divPlayMusic.style.backgroundColor = "var(--blue-aqua)";
 
-                imagePlay.src = "../assets/icons/icon-play.svg";
+                imagePlay.src = "./assets/icons/icon-play.svg";
             }, 1500);
         }
 
@@ -179,7 +179,7 @@ const controlsSound = {
 
                 if(selectedNote == soundChosenPlayIndex) {
                     divPlayMusic.style.background = "#7bfa7b";
-                    imagePlay.src = "../assets/icons/icon-note-correct.svg";
+                    imagePlay.src = "./assets/icons/icon-note-correct.svg";
                     
                         this.noteHit = true;
     
@@ -189,7 +189,7 @@ const controlsSound = {
                         returnStyleDivPlay();
                     } else {
                         divPlayMusic.style.background = "#fa7b7b";
-                        imagePlay.src = "../assets/icons/icon-note-wrong.svg";
+                        imagePlay.src = "./assets/icons/icon-note-wrong.svg";
                         divPlayMusic.classList.add('note-wrong');
                         
                         this.noteHit = false;
@@ -218,6 +218,11 @@ const controlsSound = {
             this.audio.src = chosenSounds[soundChosenPlayIndex].src;
             
             console.log(this.audio);
+
+            buttonNextNote.style.animation = "jump-out 200ms";
+            setTimeout(() => {
+                buttonNextNote.style.animation = "";
+            }, 300)
         };
     },
 }

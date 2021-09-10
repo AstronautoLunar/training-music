@@ -107,7 +107,9 @@ li.button-note
 
 button#button-play,
 li.button-note,
-div#area-initial {
+div#area-initial,
+button#button-next-note
+{
     transition: all 200ms;
 }
 
@@ -139,7 +141,8 @@ div#play-sound {
 }
 
 div#play-sound:hover,
-div.sound-chosen:hover
+div.sound-chosen:hover,
+button#button-next-note:hover
 {
     transform: scale(1.2);
 }
