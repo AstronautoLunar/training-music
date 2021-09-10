@@ -5,7 +5,7 @@
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         
-        <title>Page Title</title>
+        <title>Treinador de ouvido</title>
         
         <link rel='stylesheet' type='text/css' media='screen' href='./style/header.css'>
         <link href="style/globals.css" rel="stylesheet"/>
@@ -13,7 +13,7 @@
     </head>
     <body>
         <header id="header" role="header">
-            <h1 id="title-header">Treinador de ouvido relativo</h1>
+            <h1 id="title-header">Treinador de ouvido</h1>
             <nav id="nav-header">
                 <ul id="list-nav">
                     <li class="item">
@@ -44,9 +44,23 @@
                     </button>
                 </div>
             </div>
+            <div id="area-about">
+                <img
+                    id="dev-image"
+                    src="./assets/dev/dev-pedro.jpg"
+                    alt="desenvolvedor do site"
+                />
+                <span id="about">
+                    Olá sou Pedro Paulo, tenho 19 anos e estudo desenvolvimento web desde de 2020, venho procurado aprender ao maximo possivel para desenvolver minhas habilidades e adquirir mais conhecimento
+                </span>
+            </div>
         </main>
         <script src='./script/main.js'></script>
+        <script src='./script/header.js'></script>
         <script>
+            controlsHeader.load();
+            controlsHeader.loadMain();
+            controlsHeader.loadAbout();
             controlsSound.drawControlsInitial();
             controlsSound.loadButtonNote();
             controlsSound.start();

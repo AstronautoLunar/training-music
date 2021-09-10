@@ -134,6 +134,8 @@ div#play-sound {
     transition: all 200ms;
 
     cursor: pointer;
+
+    position: relative;
 }
 
 div#play-sound:hover,
@@ -188,8 +190,7 @@ div.sound-chosen {
 }
 
 .selected-note {
-    animation-name: selected-note;
-    animation-duration: 200ms;
+    animation: selected-note 200ms;
 }
 
 @keyframes selected-note {
@@ -204,4 +205,44 @@ div.sound-chosen {
     100% {
         background-color: var(--blue-aqua);
     }
+}
+
+.note-wrong {
+    animation: note-wrong 200ms;
+}
+
+@keyframes note-wrong {
+    0% {
+        left: 0px;
+    }
+
+    25% {
+        left: 10px;
+    }
+
+    50% {
+        left: -20px;
+    }
+
+    75% {
+        left: 10px;
+    }
+
+    100% {
+        left: 0px;
+    }
+}
+
+button#button-next-note {
+    background-color: var(--blue-aqua);
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 20px;
+
+    font-size: 20px;
+
+    color: var(--blue-white);
 }
