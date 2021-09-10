@@ -20,7 +20,7 @@ const controlsSound = {
         {
             id: 0,
             name: "C",
-            src: "../assets/audios/C-dó.mp3",
+            src: "./assets/audios/C-dó.mp3",
             selected: false
         },
         {
@@ -110,9 +110,10 @@ const controlsSound = {
 
         let selectedNote = null;
 
-        let soundChosenPlayIndex = Math.floor(Math.random() * chosenSounds.length);
-        console.log(soundChosenPlayIndex);
-
+        function randomNumber() {
+            soundChosenPlayIndex = Math.floor(Math.random() * chosenSounds.length);
+        }
+        randomNumber();
         
         this.divAreaAudio.setAttribute('id', 'area-audio');
         this.areaSound.appendChild(this.divAreaAudio);
@@ -121,33 +122,32 @@ const controlsSound = {
         divPlayMusic.setAttribute('id', 'play-sound');
         this.divAreaAudio.appendChild(divPlayMusic);
 
-        // const audio = new Audio();
-        this.audio.src = chosenSounds[soundChosenPlayIndex].src;
-        divPlayMusic.onclick = () => {
-            divPlayMusic.classList.add('jump-out');
-
-            setTimeout(() => {
-                divPlayMusic.classList.remove('jump-out');
-            }, 200);
-
-            this.audio.play();
-
-            console.log(chosenSounds[soundChosenPlayIndex])
-
-            console.log(this.audio);
-            console.log(soundChosenPlayIndex);
-        }
-        
-        const divButtonsSoundNote = window.document.createElement('div');
-        divButtonsSoundNote.setAttribute('id', 'area-button-sound');
-        this.divAreaAudio.appendChild(divButtonsSoundNote);
-
         const imagePlay = new Image();
         imagePlay.src = "./assets/icons/icon-play.svg";
         imagePlay.setAttribute('alt', 'icon play sound')
         imagePlay.style.width = "35%";
         divPlayMusic.appendChild(imagePlay);
 
+        this.audio.src = chosenSounds[soundChosenPlayIndex].src;
+
+        let timerDivPlayMusic;
+
+        divPlayMusic.onclick = () => {
+            divPlayMusic.classList.add('jump-out');
+
+            clearTimeout(timerDivPlayMusic);
+            timerDivPlayMusic = setTimeout(() => {
+                divPlayMusic.classList.remove('jump-out');
+            }, 200);
+
+            this.audio.play();
+
+            console.log(chosenSounds[soundChosenPlayIndex])
+        }
+        
+        const divButtonsSoundNote = window.document.createElement('div');
+        divButtonsSoundNote.setAttribute('id', 'area-button-sound');
+        this.divAreaAudio.appendChild(divButtonsSoundNote);
 
         for(let i in chosenSounds) {
             divButtonsSoundNote.innerHTML += `<div class="sound-chosen" data-key="${i}">${chosenSounds[i].name}</div>`
@@ -155,36 +155,36 @@ const controlsSound = {
 
         const notes = window.document.querySelectorAll("div.sound-chosen");
 
+        let timerReturnStyleDivPlay;
+
         function returnStyleDivPlay() {
-            setTimeout(() => {
+            clearTimeout(timerReturnStyleDivPlay);
+
+            timerReturnStyleDivPlay = setTimeout(() => {
                 divPlayMusic.style.backgroundColor = "var(--blue-aqua)";
 
                 imagePlay.src = "./assets/icons/icon-play.svg";
             }, 1500);
         }
 
+        let timerNotes;
+
         notes.forEach(note => {
             note.onclick = event => {
                 note.classList.add('selected-note');
-                setTimeout(() => {
+                
+                clearTimeout(timerNotes);
+                timerNotes = setTimeout(() => {
                     note.classList.remove('selected-note');
                 }, 300)
                 
                 selectedNote = event.target.dataset.key;
-                
-                console.log(`nota gerada: ${soundChosenPlayIndex}`);
-                console.log(`nota escolhida: ${selectedNote}`);
-                
-                
 
                 if(selectedNote == soundChosenPlayIndex) {
                     divPlayMusic.style.background = "#7bfa7b";
                     imagePlay.src = "./assets/icons/icon-note-correct.svg";
                     
                         this.noteHit = true;
-    
-                        console.log(this.noteHit);
-                        
                         
                         returnStyleDivPlay();
                     } else {
@@ -200,7 +200,7 @@ const controlsSound = {
                             divPlayMusic.classList.remove('note-wrong');
                         }, 300);
                         
-                    returnStyleDivPlay();
+                        returnStyleDivPlay();
                 }
             }
         })
@@ -210,17 +210,29 @@ const controlsSound = {
         buttonNextNote.innerText = "Próxima nota";
         this.divAreaAudio.appendChild(buttonNextNote);
 
-        buttonNextNote.onclick = () => {
-            soundChosenPlayIndex = Math.floor(Math.random() * chosenSounds.length);
+        let oldSelectedNote = null;
 
-            console.log(soundChosenPlayIndex);
+        let timerButtonNextNote;
+
+        buttonNextNote.onclick = () => {
+            randomNumber();
             
+            for(let i = 1; i <= 3; i++) {
+                if(oldSelectedNote == soundChosenPlayIndex) {
+                    randomNumber();
+                } else {
+                    break;
+                }
+            }
+            
+            oldSelectedNote = soundChosenPlayIndex;
+
             this.audio.src = chosenSounds[soundChosenPlayIndex].src;
-            
-            console.log(this.audio);
 
             buttonNextNote.style.animation = "jump-out 200ms";
-            setTimeout(() => {
+
+            clearTimeout(timerButtonNextNote);
+            timerButtonNextNote = setTimeout(() => {
                 buttonNextNote.style.animation = "";
             }, 300)
         };

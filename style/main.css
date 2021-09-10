@@ -249,3 +249,32 @@ button#button-next-note {
 
     color: var(--blue-white);
 }
+
+@media screen and (max-width: 652px) {
+    div#area-sound {
+        width: calc(100% - 100px);
+    }
+    
+    div#area-initial {
+        flex-direction: column;
+
+        height: 100%;
+    }
+
+    ul#options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin: 0 3rem;
+    }
+
+    li.button-note {
+        font-size: 2rem;
+    }
+
+    button#button-play {
+        padding: 25px 50px;
+    }
+}
