@@ -142,7 +142,7 @@ const controlsSound = {
 
             this.audio.play();
 
-            // console.log(chosenSounds[soundChosenPlayIndex])
+            console.log(chosenSounds[soundChosenPlayIndex])
         }
         
         const divButtonsSoundNote = window.document.createElement('div');
