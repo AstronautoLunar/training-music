@@ -142,7 +142,7 @@ const controlsSound = {
 
             this.audio.play();
 
-            console.log(chosenSounds[soundChosenPlayIndex])
+            // console.log(chosenSounds[soundChosenPlayIndex])
         }
         
         const divButtonsSoundNote = window.document.createElement('div');
@@ -193,8 +193,6 @@ const controlsSound = {
                         divPlayMusic.classList.add('note-wrong');
                         
                         this.noteHit = false;
-    
-                        console.log(this.noteHit);
 
                         setTimeout(() => {
                             divPlayMusic.classList.remove('note-wrong');

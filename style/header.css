@@ -58,20 +58,39 @@ div#area-about {
     align-items: center;
 
     display: none;
+
+    margin-top: 7rem;
+    margin-bottom: 2.5rem;
 }
 
 img#dev-image {
-    width: 300px;
+    width: 20rem;
 
     border-radius: 20px;
 }
 
 span#about {
-    margin-top: 20px;
+    margin: 20px 5rem 0;
     
     font-size: 25px;
 
-    width: 35rem;
-
     text-align: center;
+}
+
+@media screen and (max-width: 652px) {
+    div#area-about {
+        margin-top: 2.7rem;
+    }
+}
+
+@media screen and (max-width: 402px) {
+    img#dev-image {
+        width: 10rem;
+    }
+
+    span#about {
+        font-size: 20px;
+
+        margin: 20px 2.5rem 0;
+    }
 }
