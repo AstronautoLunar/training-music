@@ -1,7 +1,5 @@
 main#main {
     width: 100%;
-    /* height: 35rem; */
-    
     
     justify-content: center;
     align-items: center;
@@ -20,7 +18,6 @@ div.sound-chosen
 
 div#area-sound {
     width: calc(100% - 200px);
-    /* height: 25rem; */
     padding: 5rem 0;
 
     margin-top: 5rem;
@@ -57,10 +54,6 @@ li.button-note {
     transition: all 200ms;
 
     cursor: pointer;
-}
-
-li.button-note:hover {
-    transform: scale(1.2);
 }
 
 li.selected {
@@ -111,7 +104,8 @@ li.button-note
 button#button-play,
 li.button-note,
 div#area-initial,
-button#button-next-note
+button#button-next-note,
+div.sound-chosen
 {
     transition: all 200ms;
 }
@@ -147,7 +141,8 @@ div#play-sound {
 
 div#play-sound:hover,
 div.sound-chosen:hover,
-button#button-next-note:hover
+button#button-next-note:hover,
+li.button-note:hover
 {
     transform: scale(1.2);
 }
@@ -173,8 +168,6 @@ button#button-next-note:hover
 
 div#area-button-sound {
     margin-bottom: 4rem;
-
-    width: 20rem;
 
     flex-wrap: wrap;
 }
@@ -264,6 +257,18 @@ button#button-next-note {
 }
 
 @media screen and (max-width: 652px) {
+    div#play-sound:hover,
+    div.sound-chosen:hover,
+    button#button-next-note:hover,
+    li.button-note:hover
+    {
+        transform: none;
+    }
+
+    div.sound-chosen:active {
+        transform: scale(1.2);
+    }
+
     div#area-sound {
         width: calc(100% - 100px);
     
