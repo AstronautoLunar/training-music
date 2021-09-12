@@ -44,7 +44,7 @@ const controlsSound = {
         {
             id: 4,
             name: "G",
-            src: "./assets/audios/F-fá.mp3",
+            src: "./assets/audios/G-sól.mp3",
             selected: false
         },
         {
@@ -141,8 +141,6 @@ const controlsSound = {
             }, 200);
 
             this.audio.play();
-
-            console.log(chosenSounds[soundChosenPlayIndex])
         }
         
         const divButtonsSoundNote = window.document.createElement('div');
