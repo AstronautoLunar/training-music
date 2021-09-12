@@ -1,6 +1,3 @@
-// const areaOptions = window.document.querySelector('ul#options');
-// const buttonStart = window.document.querySelector('button#button-play');
-
 let start = false;
 
 const controlsSound = {
