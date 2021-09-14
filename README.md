@@ -13,7 +13,7 @@
 ## Sobre
 Eu fiz esse projeto com o objetivo de treinar o meu ouvido musical, por isso eu fiz com html, css e javascript puro para eu ter acesso com maior facilidade a ele e 
 quem sabe criar uma versão dele para desktop com electron js, espero que esse simples site te ajude a treinar o seu ouvido musical, o código não está dos melhores, percebi
-isso enquanto desenvolvia ele, mas o importante é praticar, o projeto está livre mas modificações e entre outras coisas, sugestões são bem vindo e criticas construtivas também
+isso enquanto desenvolvia ele, mas o importante é praticar, o projeto está livre para modificações e entre outras coisas, sugestões são bem vindo e criticas construtivas também
 fique livre para desfrutar do meu software
 
 ## Pre Requisitos
