@@ -4,7 +4,8 @@ const controlsHeader = {
     main: window.document.querySelector('main#main'),
 
     loadMain() {
-        this.buttonsNavBar[0].onclick = () => {
+        const home = this.buttonsNavBar[0];
+        home.onclick = () => {
             controlsSound.areaSound.style.display = "flex";
             
             this.areaAbout.style.display = "none";
@@ -12,7 +13,8 @@ const controlsHeader = {
     },
 
     loadAbout() {
-        this.buttonsNavBar[1].onclick = () => {
+        const about = this.buttonsNavBar[1];
+        about.onclick = () => {
             controlsSound.areaSound.style.display = "none";
             this.areaAbout.style.display = "flex";
         }
