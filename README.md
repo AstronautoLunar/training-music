@@ -1,5 +1,7 @@
 <h1 align="center">Projeto treinador de ouvido</h1>
 
+![alt text](https://github.com/Pyedrown/training-music/blob/master/presentation/screenshot.PNG)
+
 <p align="center">Projeto fron-end para treino do ouvido musical</p>
 
 * [Sobre](#Sobre)
@@ -7,7 +9,7 @@
 * [Tecnologias](#tecnologias)
 
 <h4 align="center">
-  Concluido
+ ✔️ Concluido ✔️
 </h4>
 
 ## Sobre
