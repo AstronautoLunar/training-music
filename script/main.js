@@ -9,7 +9,8 @@ const controlsSound = {
     divPlayMusic: window.document.createElement('div'),
     divButtonsSoundNote: window.document.createElement('div'),
     buttonNextNote: window.document.createElement('button'),
-
+    
+    soundChosenPlayIndex: null,
     noteHit: null,
     storageNoteChosen: null,
     audio: new Audio(),
@@ -64,11 +65,36 @@ const controlsSound = {
     },
 
     loadChosenSounds() {
+        const defaultChosenNotes = [
+            {
+                id: 0,
+                name: "C",
+                src: "./assets/audios/C-dó.mp3",
+                selected: true
+            },
+            {
+                id: 1,
+                name: "D",
+                src: "./assets/audios/D-ré.mp3",
+                selected: true
+            },
+            {
+                id: 2,
+                name: "E",
+                src: "./assets/audios/E-mí.mp3",
+                selected: true
+            }
+        ]
+
         this.chosenSounds = sounds.filter(sound => sound.selected === true);
+        
+        if(this.chosenSounds.length === 0) {
+            this.chosenSounds = defaultChosenNotes;
+        }
     },
 
     randomNumber() {
-        soundChosenPlayIndex = Math.floor(Math.random() * this.chosenSounds.length);
+        this.soundChosenPlayIndex = Math.floor(Math.random() * this.chosenSounds.length);;
     },
 
     renderAreaAudio() {
@@ -89,7 +115,10 @@ const controlsSound = {
     },
 
     loadSourceAudio() {
-        this.audio.src = this.chosenSounds[soundChosenPlayIndex].src;
+        console.log(this.chosenSounds);
+
+        this.audio.src = this.chosenSounds[this.soundChosenPlayIndex].src;
+
     },
 
     loadEventDivPlayMusic() {
@@ -112,9 +141,39 @@ const controlsSound = {
     },
 
     renderButtonSoundChosen() {
-        for (let i in this.chosenSounds) {
-            this.divButtonsSoundNote.innerHTML += `<div class="sound-chosen" data-key="${i}">${this.chosenSounds[i].name}</div>`
-        }
+        const buttonsHTMLArray = this.chosenSounds.map(item => {
+            const { 
+                name, 
+                id, 
+                src 
+            } = item;
+            return ( 
+                `
+                    <div class="sound-chosen" data-key="${id}">
+                        ${name}
+                        <audio
+                            src="${src}"
+                        />
+                    </div>
+                `
+            )
+        });
+
+        const buttonHTMLString = buttonsHTMLArray.join("");
+
+        this.divButtonsSoundNote.innerHTML = buttonHTMLString;
+
+        const soundChosenNote = window.document.querySelectorAll(".sound-chosen");
+
+        soundChosenNote.forEach(item => {
+            item.addEventListener("click", ({ target }) => {
+                const { children } = target;
+                const [ audio ] = children;
+                audio.volume = 0.5
+                
+                audio.play();
+            }, false);
+        })
     },
 
     returnStyleDivPlay() {
@@ -126,6 +185,22 @@ const controlsSound = {
 
             this.imagePlay.src = "./assets/icons/icon-play.svg";
         }, 1500);
+    },
+
+    styleButton({
+        color,
+        src
+    }) {
+        this.divPlayMusic.style.background = color;
+        this.imagePlay.src = src;
+    },
+
+    setClassNoteWrongAnimation(element) {
+        element.classList.add('note-wrong');
+
+        setTimeout(() => {
+            element.classList.remove('note-wrong');
+        }, 300);
     },
 
     renderNoteFull() {
@@ -144,24 +219,24 @@ const controlsSound = {
 
                 selectedNote = event.target.dataset.key;
 
-                if (selectedNote == soundChosenPlayIndex) {
-                    this.divPlayMusic.style.background = "#7bfa7b";
-                    this.imagePlay.src = "./assets/icons/icon-note-correct.svg";
+                if (selectedNote == this.chosenSounds[this.soundChosenPlayIndex].id) {
+                    this.styleButton({
+                        color: "#7bfa7b",
+                        src: "./assets/icons/icon-note-correct.svg"
+                    });
 
                     this.noteHit = true;
 
                     this.returnStyleDivPlay();
                 } else {
-                    this.divPlayMusic.style.background = "#fa7b7b";
-                    this.imagePlay.src = "./assets/icons/icon-note-wrong.svg";
-                    this.divPlayMusic.classList.add('note-wrong');
-
+                    this.styleButton({
+                        color: "#fa7b7b",
+                        src: "./assets/icons/icon-note-wrong.svg"
+                    });
+                    
                     this.noteHit = false;
 
-                    setTimeout(() => {
-                        this.divPlayMusic.classList.remove('note-wrong');
-                    }, 300);
-
+                    this.setClassNoteWrongAnimation(this.divPlayMusic);
                     this.returnStyleDivPlay();
                 }
             }
@@ -180,16 +255,16 @@ const controlsSound = {
             this.randomNumber();
 
             for (let i = 1; i <= 3; i++) {
-                if (oldSelectedNote == soundChosenPlayIndex) {
+                if (oldSelectedNote == this.soundChosenPlayIndex) {
                     this.randomNumber();
                 } else {
                     break;
                 }
             }
 
-            oldSelectedNote = soundChosenPlayIndex;
+            oldSelectedNote = this.soundChosenPlayIndex;
 
-            this.audio.src = this.chosenSounds[soundChosenPlayIndex].src;
+            this.audio.src = this.chosenSounds[this.soundChosenPlayIndex].src;
 
             this.buttonNextNote.style.animation = "jump-out 200ms";
 
