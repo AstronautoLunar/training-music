@@ -86,7 +86,7 @@ button#button-play {
     }
 
     50% {
-        transform: scale(1.2);
+        transform: scale(0.8);
     }
     
     100% {
@@ -160,7 +160,7 @@ li.button-note:hover
     }
 
     50% {
-        transform: scale(1.5);
+        transform: scale(1);
     }
 
     100% {
