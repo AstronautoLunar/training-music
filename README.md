@@ -22,10 +22,14 @@ fique livre para desfrutar do meu software
 Você precisa apenas de um editor de código e obviamente de um navegador, recomendo usar o google chrome
 
 # Copie e cole no seu GIT
-$ git clone https://github.com/Pyedrown/training-music.git
+```
+git clone https://github.com/Pyedrown/training-music.git
+```
 
 # e em seguida use
-$ cd training-music
+```
+cd training-music
+```
 
 # Clique no index.html para começar a usar-lo
 
